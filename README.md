@@ -14,3 +14,5 @@ Existen 2 tipos:
 Estatico: Inspeccionar el malware sin ejecutarlo
 
 Dinamico: Ademas de inspeccionarlo, impplica tambien sy ejecucion y evaluar su comportamiento.
+
+Entornos de Pruebas o Sandboxes
