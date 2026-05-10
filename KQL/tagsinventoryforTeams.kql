@@ -1,0 +1,23 @@
+resources 
+
+| join kind=leftouter (resourcecontainers | where type =~'microsoft.resources/subscriptions' | project subscriptionId, subscriptionName = name) on subscriptionId 
+
+| where not(tags['Operations team'] != '') or not(tags['Business criticality'] != '') or not(tags['Squad'] !='') or not(tags['Tribu'] != '') or not(tags['Environment'] != '') or not(tags['Application name'] != '')  
+
+| extend  
+
+    OperationsTeam = tags['Operations team'],  
+
+    BusinessCriticality = tags['Business criticality'],  
+
+    Squad = tags['Squad'],  
+
+    Tribu = tags['Tribu'],  
+
+    Environment = tags['Environment'],  
+
+    ApplicationName = tags['Application name'] 
+
+| project subscriptionName, resourceGroup, name, type, OperationsTeam, BusinessCriticality, Squad, Tribu, Environment, ApplicationName 
+
+  
