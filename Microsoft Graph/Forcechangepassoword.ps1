@@ -6,7 +6,7 @@ ForceChangePasswordNextSignIn = $true
 
 }
 
-$users = Import-Csv '‪D:\passwordchange.csv'
+$users = Import-Csv '‪D:\usersprofile.csv'
 
 $users | ForEach-Object {
 
