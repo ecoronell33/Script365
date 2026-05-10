@@ -1,0 +1,19 @@
+securityresources 
+
+| where type =~ "microsoft.security/pricings" 
+
+| project subscriptionId, planName = name, pricingTier = properties.pricingTier, subPlan = properties.subPlan 
+
+| join kind=leftouter ( 
+
+    resourcecontainers 
+
+    | where type =~ "microsoft.resources/subscriptions" 
+
+    | project subscriptionId, subscriptionName = name 
+
+) on subscriptionId 
+
+| project subscriptionName, subscriptionId, planName, pricingTier, subPlan 
+
+| order by subscriptionName asc 
