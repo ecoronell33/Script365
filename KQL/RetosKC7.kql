@@ -1,0 +1,9 @@
+Employees
+| where role == "CEO"
+
+InboundNetworkEvents
+| where timestamp between (datetime("2024-04-10T00:00:00") .. datetime("2024-04-11T00:00:00"))
+| where src_ip has "18.66.52.227"
+| where url contains "fluffy"
+
+Consulta la tabla Employess y busca un coincidencia en la columna Role que presente CEO
