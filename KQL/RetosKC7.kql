@@ -11,3 +11,11 @@ el valor fluffy
 
 Email
 | where recipient has "owl-records.com" and link has "betterlyrics4u.com"
+
+
+let _targets = Email
+| where link has "betterlyrics4u.com"
+| distinct recipient;
+Employees
+| where email_addr in (_targets)
+
