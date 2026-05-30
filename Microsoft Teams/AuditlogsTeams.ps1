@@ -1,4 +1,4 @@
-#Busqueda de registros de actividades relacionadas a Microsoft Teams
+#Busqueda de registros de actividades relacionadas a Microsoft Teams (Maximo 180 dias)
 
 $results = Search-UnifiedAuditLog
 StartDate (Get-Date). AddDays (-30)
