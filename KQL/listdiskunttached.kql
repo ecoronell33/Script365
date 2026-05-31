@@ -1,0 +1,5 @@
+resources
+| where type == "microsoft.compute/disks"
+| where properties.diskState == "Unattached"
+| project name, resourceGroup, diskSizeGB = toint(properties.diskSizeGB), tier = sku.name
+| order by diskSizeGB desc
