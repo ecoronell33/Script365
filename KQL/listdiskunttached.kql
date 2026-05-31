@@ -1,5 +1,6 @@
 resources
+| join kind=leftouter (resourcecontainers | where type =~'microsoft.resources/subscriptions' | project subscriptionId, subscriptionName = name) on subscriptionId 
 | where type == "microsoft.compute/disks"
 | where properties.diskState == "Unattached"
-| project name, resourceGroup, diskSizeGB = toint(properties.diskSizeGB), tier = sku.name
+| project subscriptionName, name,  resourceGroup, diskSizeGB = toint(properties.diskSizeGB), tier = sku.name
 | order by diskSizeGB desc
